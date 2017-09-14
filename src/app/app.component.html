@@ -1,7 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1 class="top-header">
-    Next Party in on {{nextParty | date}}
-  </h1>
-  <countdown units="Month | Days | Hours | Minutes | Seconds" end="{{nextParty}}"></countdown>
+<div class="">
+  <h1 class="panel-header">Nākošā nodzeršanās būs <span class="header-date">{{nextParty | lvDate}}</span></h1>
+  <app-custom-countdown units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></app-custom-countdown>
 </div>

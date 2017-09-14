@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {CountDown} from "ng2-date-countdown";
 
 import { AppComponent } from './app.component';
+import { CustomCountdownComponent } from './custom-countdown/custom-countdown.component';
+import { LvDatePipe } from './lv-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountDown
+    CustomCountdownComponent,
+    LvDatePipe
   ],
   imports: [
     BrowserModule

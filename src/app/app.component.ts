@@ -1,38 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { NextPartyService } from './next-party.service';
 import * as moment from 'moment'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [NextPartyService]
 })
 export class AppComponent implements OnInit {
   nextParty: Date;
 
+  constructor(private nextPartyService: NextPartyService) { }
+
   ngOnInit(): void {
-    this.nextParty = this.getNextSeptember2ndSaturday(moment());
-  }
-
-  getSeptember2ndSaturday(startingMoment) {
-    return startingMoment
-      .clone()
-      .month('September')
-      .startOf('month')
-      .day('Saturday')
-      .add(1, 'day')
-      .day('Saturday');
-  }
-
-  getNextSeptember2ndSaturday(startingMoment): Date {
-    var thisYear = this.getSeptember2ndSaturday(startingMoment);
-    if (startingMoment.isAfter(thisYear)) {
-      return this.getSeptember2ndSaturday(startingMoment
-        .clone()
-        .add(1, 'year')
-      ).toDate()
-    }
-    return thisYear.toDate();
+    this.nextParty = this.nextPartyService.getNextDate(moment());
   }
 
 }
