@@ -1,0 +1,12 @@
+.info-panel {
+    background-color: rgba(0, 0, 0, .4);
+    padding: 10px;
+}
+
+.info-panel-labels {
+    color: #b7b7b7;
+}
+
+.info-panel-today {
+    color: #C7C840;
+}

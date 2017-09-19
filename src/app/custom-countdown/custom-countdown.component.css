@@ -1,5 +1,6 @@
 .countdown-days {
     text-align: center;
+    text-transform: uppercase;
 }
 
 .countdown-time {
