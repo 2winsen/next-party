@@ -1,0 +1,8 @@
+<div class="next-party-panel">
+  <section>
+    <h3 class="next-party-panel__header">Nākošā oficiālā tikšanās notiks</h3>
+    <h3 *ngIf="!isToday"><span class="next-party-panel__date">{{nextParty | latvianDate}}</span></h3>
+    <h3 *ngIf="isToday" class="next-party-panel-today__label">ŠODIEN. JĒĒI!!!</h3>
+  </section>
+  <next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></next-party-countdown>
+</div>

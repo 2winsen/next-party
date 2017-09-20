@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-@Pipe({ name: 'lvDate' })
-export class LvDatePipe implements PipeTransform {
+
+@Pipe({ name: 'latvianDate' })
+export class LatvianDatePipe implements PipeTransform {
   transform(value: Date): String {
-    var lvMonths:Array<String> = [
+    var latvianMonths: Array<String> = [
       'janvārī',
       'februārī',
       'martā',
@@ -16,6 +17,6 @@ export class LvDatePipe implements PipeTransform {
       'novembrī',
       'decembrī'
     ];
-    return `${value.getDate()}. ${lvMonths[value.getMonth()]} ${value.getFullYear()}. gadā`;
+    return `${value.getDate()}. ${latvianMonths[value.getMonth()]} ${value.getFullYear()}. gadā`;
   }
 }

@@ -1,27 +1,48 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NextPartyService } from './core/next-party.service';
+import { MockComponent } from 'ng2-mock-component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let nextPartyService: NextPartyService;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+      imports: [
+        NoopAnimationsModule
       ],
+      declarations: [
+        AppComponent,
+        MockComponent({ selector: 'next-party-panel', inputs: ['nextParty', 'isToday'] })
+      ],
+      providers: [NextPartyService]
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    nextPartyService = fixture.debugElement.injector.get(NextPartyService);
+    nextPartyService.getNextDate = jasmine.createSpy('getNextDate');
+    nextPartyService.isToday = jasmine.createSpy('isToday');
   }));
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+
+  it('should show preloader', async(() => {
+    const el = fixture.nativeElement;
+    expect(el.querySelector('.preloader').getAttribute('hidden')).toEqual(null);
   }));
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+
+  it(`should show content for today's party`, async(() => {
+    nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(true);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    const el = fixture.nativeElement;
+    expect(el.querySelector('.content').classList.contains('content-today')).toEqual(true);
+  }));
+
+  it(`should show content NOT for today's party`, async(() => {
+    nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(false);
+    fixture.detectChanges();
+    const el = fixture.nativeElement;
+    expect(el.querySelector('.content').classList.contains('content-today')).toEqual(false);
   }));
 });

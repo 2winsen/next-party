@@ -1,12 +1,12 @@
-.info-panel {
+.next-party-panel {
     background-color: rgba(0, 0, 0, .4);
     padding: 10px;
 }
 
-.info-panel-labels {
+.next-party-panel {
     color: #b7b7b7;
 }
 
-.info-panel-today {
+.next-party-panel-today__label {
     color: #C7C840;
 }

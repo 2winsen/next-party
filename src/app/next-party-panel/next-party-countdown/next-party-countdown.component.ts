@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-custom-countdown',
-  templateUrl: './custom-countdown.component.html',
-  styleUrls: ['./custom-countdown.component.css']
+  selector: 'next-party-countdown',
+  templateUrl: './next-party-countdown.component.html',
+  styleUrls: ['./next-party-countdown.component.css']
 })
-export class CustomCountdownComponent {
+export class NextPartyCountdownComponent {
   daysLabel: string;
   days: any;
   seconds: any;
@@ -85,13 +85,24 @@ export class CustomCountdownComponent {
         returnText += ' ' + unit;
       }
     }
-    var displayNumbers: Array<String> = returnNumbers
+    this.displayDays(returnNumbers);
+    this.displayTime(returnNumbers);
+  }
+
+  private getDisplayNumbers(returnNumbers: String): Array<String> {
+    return returnNumbers
       .slice(0, -1)
       .split('|')
       .map(n => n.trim());
-    this.days = displayNumbers[0];
-    this.daysLabel = this.days.charAt(this.days.length - 1) === '1' ? 'diena' : 'dienas'
-    var timeNumbers: Array<String> = displayNumbers
+  }
+
+  private displayDays(returnNumbers: String) {
+    this.days = this.getDisplayNumbers(returnNumbers)[0];
+    this.daysLabel = this.days.charAt(this.days.length - 1) === '1' ? 'diena' : 'dienas';
+  }
+
+  private displayTime(returnNumbers: String) {
+    var timeNumbers: Array<String> = this.getDisplayNumbers(returnNumbers)
       .slice(-3)
       .map(n => n.padStart(2, '0'));
     this.hours = timeNumbers[0];

@@ -4,10 +4,15 @@ import * as moment from 'moment'
 @Injectable()
 export class NextPartyService {
 
+  private nextDate: Date;
+
   constructor() { }
 
-  getNextDate(momentNow): Date {
-    return this.getNextSeptember2ndSaturday(momentNow);
+  public getNextDate(momentNow): Date {
+    if (!this.nextDate) {
+      this.nextDate = this.getNextSeptember2ndSaturday(momentNow);
+    }
+    return this.nextDate;
   }
 
   private getSeptember2ndSaturday(momentNow) {
@@ -33,7 +38,7 @@ export class NextPartyService {
     return thisYear.toDate()
   }
 
-  isToday(momentNextParty) {
-    return moment(momentNextParty).diff(moment(), 'days') === 0;
+  public isToday(momentNow, nextParty) {
+    return moment(nextParty).diff(momentNow, 'days') === 0;
   }
 }

@@ -1,12 +1,12 @@
-.countdown-days {
+.next-party-countdown-days {
     text-align: center;
     text-transform: uppercase;
 }
 
-.countdown-time {
+.next-party-countdown-time {
     text-align: center;
 }
 
-.countdown-time-seconds {
+.next-party-countdown-time__seconds {
     color: #C7C840;
 }

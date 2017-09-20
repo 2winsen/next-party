@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { CustomCountdownComponent } from './custom-countdown/custom-countdown.component';
-import { LvDatePipe } from './lv-date.pipe';
-import { InfoPanelComponent } from './info-panel/info-panel.component';
+import { NextPartyCountdownComponent } from './next-party-panel/next-party-countdown/next-party-countdown.component';
+import { LatvianDatePipe } from './core/latvian-date.pipe';
+import { NextPartyPanelComponent } from './next-party-panel/next-party-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomCountdownComponent,
-    LvDatePipe,
-    InfoPanelComponent
+    NextPartyCountdownComponent,
+    LatvianDatePipe,
+    NextPartyPanelComponent
   ],
   imports: [
     BrowserModule,
