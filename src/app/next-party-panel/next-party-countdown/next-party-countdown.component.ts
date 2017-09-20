@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'next-party-countdown',
   templateUrl: './next-party-countdown.component.html',
-  styleUrls: ['./next-party-countdown.component.css']
+  styleUrls: ['./next-party-countdown.component.scss']
 })
 export class NextPartyCountdownComponent {
   daysLabel: string;

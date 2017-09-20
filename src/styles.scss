@@ -1,6 +1,8 @@
+@import "~variables.scss";
+
 html,
 body {
-    background-color: #ffffff;
+    background-color: $default-bg-color;
     font-size: 20px;
     color: #202020;
     width: 100%;

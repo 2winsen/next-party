@@ -1,3 +1,5 @@
+@import "~variables.scss";
+
 .next-party-countdown-days {
     text-align: center;
     text-transform: uppercase;
@@ -8,5 +10,5 @@
 }
 
 .next-party-countdown-time__seconds {
-    color: #C7C840;
+    color: $accent-color;
 }

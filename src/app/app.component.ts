@@ -15,7 +15,7 @@ import * as moment from 'moment'
     ])
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   providers: [NextPartyService]
 })
 export class AppComponent implements OnInit {
