@@ -20,9 +20,10 @@
       "prefix": "",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "ie10-viewport-bug-workaround.scss",
+        "atc-style-blue.scss",
         "styles.scss",
-        "variables.scss",
-        "responsive.scss"
+        "variables.scss"
       ],
       "scripts": [
         "../node_modules/moment/min/moment.min.js"

@@ -57,4 +57,18 @@ describe('NextPartyService', () => {
       expect(service.isToday(today, nextParty.toDate())).toEqual(true);
     });
   });
+
+  describe('toAddtoCalendarStart()', () => {
+    it('should return date and time in correct format', () => {
+      const date = moment('2017-09-10').toDate();
+      expect(service.toAddtoCalendarStart(date)).toEqual('2017-09-10 10:00:00');
+    });
+  });
+
+  describe('toAddtoCalendarEnd()', () => {
+    it('should return date and time in correct format', () => {
+      const date = moment('2017-09-10').toDate();
+      expect(service.toAddtoCalendarEnd(date)).toEqual('2017-09-10 23:00:00');
+    });
+  });
 });

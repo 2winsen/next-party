@@ -27,37 +27,74 @@
     margin: -20px 0 0 -20px;
 }
 
-.app-wrapper {
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+
+.site-wrapper {
     background: url(/assets/beaver.jpg) no-repeat center top fixed;
     background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
+    display: table;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    /* For at least Firefox */
+    min-height: 100%;
+    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 }
 
-.app-wrapper-overlay {
+.cover-container {
+    background-color: rgba(0, 0, 0, .6);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+    padding: 0 20px;
+}
+
+.cover .btn-lg {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+
+/* Padding for spacing */
+
+.inner {
+    padding: 30px;
+}
+
+.site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
     background-color: rgba(0, 0, 0, .2);
     width: 100%;
     height: 100%;
 }
 
-.center-div {
-    position: absolute;
-    text-align: center;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 40%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, .5);
-    padding: 10px;
-}
-
 .content-today {
     background: url(/assets/smile.jpg) no-repeat center top fixed;
+}
+
+@media (min-width: 768px) {
+    /* Start the vertical centering */
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+    /* Handle the widths */
+    .cover-container {
+        width: 100%;
+        /* Must be percentage or pixels for horizontal alignment */
+    }
+}
+
+@media (min-width: 992px) {
+    .cover-container {
+        width: 700px;
+    }
 }

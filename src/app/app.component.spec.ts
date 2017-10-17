@@ -36,13 +36,13 @@ describe('AppComponent', () => {
     nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(true);
     fixture.detectChanges();
     const el = fixture.nativeElement;
-    expect(el.querySelector('.content').classList.contains('content-today')).toEqual(true);
+    expect(el.querySelector('.inner.cover').classList.contains('content-today')).toEqual(true);
   }));
 
   it(`should show content NOT for today's party`, async(() => {
     nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(false);
     fixture.detectChanges();
     const el = fixture.nativeElement;
-    expect(el.querySelector('.content').classList.contains('content-today')).toEqual(false);
+    expect(el.querySelector('.inner.cover').classList.contains('content-today')).toEqual(false);
   }));
 });

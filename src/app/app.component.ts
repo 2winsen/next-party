@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.preloaderHidden = true;
-    this.preloaderVisibility = 'hidden'
+    this.preloaderVisibility = 'hidden';
     this.nextParty = this.nextPartyService.getNextDate(moment());
     this.isToday = this.nextPartyService.isToday(moment(), this.nextParty);
   }

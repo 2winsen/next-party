@@ -1,10 +1,12 @@
-<div class="app-wrapper">
-    <div class='preloader' [@visibilityChanged]="preloaderVisibility">
-        <div class='loaded' [hidden]="preloaderHidden">&nbsp;</div>
-    </div>
-    <div class="app-wrapper-overlay">
-        <section class="center-div" [ngClass]="{'content-today' : isToday}">
-            <next-party-panel [nextParty]="nextParty" [isToday]="isToday"></next-party-panel>
-        </section>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class='preloader' [@visibilityChanged]="preloaderVisibility">
+            <div class='loaded' [hidden]="preloaderHidden">&nbsp;</div>
+        </div>
+        <div class="cover-container">
+            <div class="inner cover" [ngClass]="{'content-today' : isToday}">
+                <next-party-panel [nextParty]="nextParty" [isToday]="isToday"></next-party-panel>
+            </div>
+        </div>
     </div>
 </div>

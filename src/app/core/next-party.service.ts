@@ -5,6 +5,7 @@ import * as moment from 'moment'
 export class NextPartyService {
 
   private nextDate: Date;
+  private static readonly ADD_TO_CALENDAR_FORMAT: string = 'YYYY-MM-DD HH:mm:ss';
 
   constructor() { }
 
@@ -40,5 +41,19 @@ export class NextPartyService {
 
   public isToday(momentNow, nextParty) {
     return moment(nextParty).diff(momentNow, 'days') === 0;
+  }
+
+  public toAddtoCalendarStart(date: Date) {
+    return moment(date)
+      .startOf('day')
+      .hour(10)
+      .format(NextPartyService.ADD_TO_CALENDAR_FORMAT);
+  }
+
+  public toAddtoCalendarEnd(date: Date) {
+    return moment(date)
+      .startOf('day')
+      .hour(23)
+      .format(NextPartyService.ADD_TO_CALENDAR_FORMAT);
   }
 }

@@ -1,8 +1,20 @@
 <div class="next-party-panel">
-  <section>
-    <h3 class="next-party-panel__header">Nākošā oficiālā tikšanās notiks</h3>
-    <h3 *ngIf="!isToday"><span class="next-party-panel__date">{{nextParty | latvianDate}}</span></h3>
-    <h3 *ngIf="isToday" class="next-party-panel-today__label">ŠODIEN. JĒĒI!!!</h3>
-  </section>
-  <next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></next-party-countdown>
+    <section>
+        <h2 class="next-party-panel__header">Nākošā oficiālā tikšanās notiks</h2>
+        <h2 *ngIf="!isToday">
+            <span class="next-party-panel__date">{{nextParty | latvianDate}}</span>
+        </h2>
+        <h1 *ngIf="isToday" class="next-party-panel-today__label">ŠODIEN. JĒĒI!!!</h1>
+        <next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></next-party-countdown>
+        <span class="addtocalendar atc-style-blue">
+            <var class="atc_event">
+                <var class="atc_date_start">{{isTodayAtcStart}}</var>
+                <var class="atc_date_end">{{isTodayAtcEnd}}</var>
+                <var class="atc_timezone">Europe/Riga</var>
+                <var class="atc_title">Nākošā oficiālā tikšanās notiks</var>
+                <var class="atc_description">Reizi gadā mēs satiekamies ar draugiem, lai labi pavadīt laiku...</var>
+                <var class="atc_location">Latvija</var>
+            </var>
+        </span>
+    </section>
 </div>
