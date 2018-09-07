@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({ name: 'latvianDate' })
 export class LatvianDatePipe implements PipeTransform {
   transform(value: Date): String {
-    var latvianMonths: Array<String> = [
+    const latvianMonths: Array<String> = [
       'janvārī',
       'februārī',
       'martā',

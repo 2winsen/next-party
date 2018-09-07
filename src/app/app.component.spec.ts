@@ -4,7 +4,6 @@ import { NextPartyService } from './core/next-party.service';
 import { MockComponent } from 'ng2-mock-component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -17,7 +16,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        MockComponent({ selector: 'next-party-panel', inputs: ['nextParty', 'isToday'] })
+        MockComponent({ selector: 'app-next-party-panel', inputs: ['nextParty', 'isToday'] })
       ],
       providers: [NextPartyService]
     }).compileComponents();

@@ -3,7 +3,7 @@ import { NextPartyService } from './../core/next-party.service';
 
 
 @Component({
-  selector: 'next-party-panel',
+  selector: 'app-next-party-panel',
   templateUrl: './next-party-panel.component.html',
   styleUrls: ['./next-party-panel.component.scss'],
   providers: [NextPartyService]

@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import * as moment from 'moment'
+import * as moment from 'moment';
 import { NextPartyService } from './next-party.service';
 
 describe('NextPartyService', () => {

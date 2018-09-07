@@ -5,7 +5,7 @@
             <span class="next-party-panel__date">{{nextParty | latvianDate}}</span>
         </h2>
         <h1 *ngIf="isToday" class="next-party-panel-today__label">ŠODIEN. JĒĒI!!!</h1>
-        <next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></next-party-countdown>
+        <app-next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></app-next-party-countdown>
         <span class="addtocalendar atc-style-blue">
             <var class="atc_event">
                 <var class="atc_date_start">{{isTodayAtcStart}}</var>

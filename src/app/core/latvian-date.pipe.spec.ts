@@ -1,5 +1,5 @@
 import { LatvianDatePipe } from './latvian-date.pipe';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 describe('LatvianDatePipe', () => {
   it('should translate date to latvian date format', () => {

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'next-party-countdown',
+  selector: 'app-next-party-countdown',
   templateUrl: './next-party-countdown.component.html',
   styleUrls: ['./next-party-countdown.component.scss']
 })
@@ -13,7 +13,7 @@ export class NextPartyCountdownComponent {
   hours: any;
   @Input() units: any;
   @Input() end: any;
-  @Input() displayString: string = '';
+  @Input() displayString = '';
   @Input() text: any;
   @Input() divider: any;
   @Output() reached: EventEmitter<Date> = new EventEmitter();
@@ -32,18 +32,18 @@ export class NextPartyCountdownComponent {
       this.units = this.units.split('|');
     }
 
-    let givenDate: any = new Date(this.end);
-    let now: any = new Date();
+    const givenDate: any = new Date(this.end);
+    const now: any = new Date();
 
-    let dateDifference: any = givenDate - now;
+    const dateDifference: any = givenDate - now;
 
     if (dateDifference < 100 && dateDifference > 0 && !this.wasReached) {
       this.wasReached = true;
       this.reached.next(now);
     }
 
-    let lastUnit = this.units[this.units.length - 1],
-      unitConstantForMillisecs = {
+    const lastUnit = this.units[this.units.length - 1],
+      unitConstantForMilliseconds = {
         year: (((1000 * 60 * 60 * 24 * 7) * 4) * 12),
         month: ((1000 * 60 * 60 * 24 * 7) * 4),
         weeks: (1000 * 60 * 60 * 24 * 7),
@@ -52,34 +52,36 @@ export class NextPartyCountdownComponent {
         minutes: (1000 * 60),
         seconds: 1000
       },
-      unitsLeft = {},
-      returnText = '',
-      returnNumbers = '',
-      totalMillisecsLeft = dateDifference,
-      i,
-      unit: any;
-    for (i in this.units) {
+      unitsLeft = {};
+    let returnText = '';
+    let returnNumbers = '';
+    let totalMillisecondsLeft = dateDifference;
+    let unit: any;
+    for (const i in this.units) {
       if (this.units.hasOwnProperty(i)) {
 
         unit = this.units[i].trim();
-        if (unitConstantForMillisecs[unit.toLowerCase()] === false) {
-          //$interval.cancel(countDownInterval);
+        if (unitConstantForMilliseconds[unit.toLowerCase()] === false) {
           throw new Error('Cannot repeat unit: ' + unit);
 
         }
-        if (unitConstantForMillisecs.hasOwnProperty(unit.toLowerCase()) === false) {
-          throw new Error('Unit: ' + unit + ' is not supported. Please use following units: year, month, weeks, days, hours, minutes, seconds, milliseconds');
+        if (unitConstantForMilliseconds.hasOwnProperty(unit.toLowerCase()) === false) {
+          // eslint ignore
+          throw new Error(
+            // tslint:disable-next-line
+            'Unit: ' + unit + ' is not supported. Please use following units: year, month, weeks, days, hours, minutes, seconds, milliseconds'
+          );
         }
 
-        unitsLeft[unit] = totalMillisecsLeft / unitConstantForMillisecs[unit.toLowerCase()];
+        unitsLeft[unit] = totalMillisecondsLeft / unitConstantForMilliseconds[unit.toLowerCase()];
 
         if (lastUnit === unit) {
           unitsLeft[unit] = Math.ceil(unitsLeft[unit]);
         } else {
           unitsLeft[unit] = Math.floor(unitsLeft[unit]);
         }
-        totalMillisecsLeft -= unitsLeft[unit] * unitConstantForMillisecs[unit.toLowerCase()];
-        unitConstantForMillisecs[unit.toLowerCase()] = false;
+        totalMillisecondsLeft -= unitsLeft[unit] * unitConstantForMilliseconds[unit.toLowerCase()];
+        unitConstantForMilliseconds[unit.toLowerCase()] = false;
 
         returnNumbers += ' ' + unitsLeft[unit] + '|';
         returnText += ' ' + unit;
@@ -102,7 +104,7 @@ export class NextPartyCountdownComponent {
   }
 
   private displayTime(returnNumbers: String) {
-    var timeNumbers: Array<String> = this.getDisplayNumbers(returnNumbers)
+    const timeNumbers: Array<String> = this.getDisplayNumbers(returnNumbers)
       .slice(-3)
       .map(n => n.padStart(2, '0'));
     this.hours = timeNumbers[0];

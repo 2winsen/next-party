@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 @Injectable()
 export class NextPartyService {
+  private static readonly ADD_TO_CALENDAR_FORMAT: string = 'YYYY-MM-DD HH:mm:ss';
 
   private nextDate: Date;
-  private static readonly ADD_TO_CALENDAR_FORMAT: string = 'YYYY-MM-DD HH:mm:ss';
 
   constructor() { }
 

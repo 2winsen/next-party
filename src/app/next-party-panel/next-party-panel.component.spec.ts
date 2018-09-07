@@ -2,8 +2,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { NextPartyPanelComponent } from './next-party-panel.component';
 import { MockComponent } from 'ng2-mock-component';
 import { ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { LatvianDatePipe } from './../core/latvian-date.pipe';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'latvianDate' })
@@ -21,7 +19,7 @@ describe('NextPartyPanelComponent', () => {
       declarations: [
         NextPartyPanelComponent,
         MockLatvianDatePipe,
-        MockComponent({ selector: 'next-party-countdown', inputs: ['units', 'end'] })
+        MockComponent({ selector: 'app-next-party-countdown', inputs: ['units', 'end'] })
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(NextPartyPanelComponent);
