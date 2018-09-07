@@ -17,3 +17,9 @@ Run `npm run build-prod` to build the project. And then check in all new files.
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Deploy to GitHub pages
+
+Run `npm run build-prod`
+Push all your changes + docs directory
+

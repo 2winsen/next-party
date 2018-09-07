@@ -51,8 +51,20 @@ describe('NextPartyService', () => {
       expect(service.isToday(today, nextParty.toDate())).toEqual(false);
     });
 
+    it('should return false for 1 day before a party', () => {
+      const today = moment('2017-09-10 21:00');
+      const nextParty = moment('2017-09-11');
+      expect(service.isToday(today, nextParty.toDate())).toEqual(false);
+    });
+
     it('should return true', () => {
       const today = moment('2017-09-11');
+      const nextParty = moment('2017-09-11');
+      expect(service.isToday(today, nextParty.toDate())).toEqual(true);
+    });
+
+    it('should return true for a party end', () => {
+      const today = moment('2017-09-11 23:59');
       const nextParty = moment('2017-09-11');
       expect(service.isToday(today, nextParty.toDate())).toEqual(true);
     });

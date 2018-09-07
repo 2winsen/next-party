@@ -31,18 +31,4 @@ describe('AppComponent', () => {
     const el = fixture.nativeElement;
     expect(el.querySelector('.preloader').getAttribute('hidden')).toEqual(null);
   }));
-
-  it(`should show content for today's party`, async(() => {
-    nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(true);
-    fixture.detectChanges();
-    const el = fixture.nativeElement;
-    expect(el.querySelector('.inner.cover').classList.contains('content-today')).toEqual(true);
-  }));
-
-  it(`should show content NOT for today's party`, async(() => {
-    nextPartyService.isToday = jasmine.createSpy('isToday').and.returnValue(false);
-    fixture.detectChanges();
-    const el = fixture.nativeElement;
-    expect(el.querySelector('.inner.cover').classList.contains('content-today')).toEqual(false);
-  }));
 });

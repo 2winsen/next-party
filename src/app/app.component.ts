@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/co
 import { DatePipe } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { NextPartyService } from './core/next-party.service';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 
 @Component({

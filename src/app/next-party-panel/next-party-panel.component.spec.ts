@@ -15,7 +15,6 @@ class MockLatvianDatePipe implements PipeTransform {
 
 describe('NextPartyPanelComponent', () => {
   let fixture: ComponentFixture<NextPartyPanelComponent>;
-  let latvianDatePipe;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,7 +43,7 @@ describe('NextPartyPanelComponent', () => {
     comp.nextParty = new Date('February 4, 2016 10:13:00');
     fixture.detectChanges();
     const el = fixture.nativeElement;
-    expect(el.querySelector('.next-party-panel__date').textContent).toEqual('Thu Feb 04 2016 10:13:00 GMT+0200 (FLE Standard Time)');
+    expect(el.querySelector('.next-party-panel__date').textContent).toMatch(/Thu Feb 04 2016 10:13:00/);
     expect(el.querySelector('next-party-countdown')).toBeDefined();
     expect(el.querySelector('.next-party-panel-today__label')).toEqual(null);
   }));

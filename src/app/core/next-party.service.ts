@@ -24,23 +24,26 @@ export class NextPartyService {
       .day('Saturday')
       .add(1, 'day')
       .day('Saturday')
-      .startOf('day')
+      .startOf('day');
   }
 
   private getNextSeptember2ndSaturday(momentNow): Date {
-    var thisYear = this.getSeptember2ndSaturday(momentNow);
+    const thisYear = this.getSeptember2ndSaturday(momentNow);
     if (momentNow.isAfter(thisYear)) {
       return this.getSeptember2ndSaturday(
         momentNow
           .clone()
           .add(1, 'year')
-      ).toDate()
+      ).toDate();
     }
-    return thisYear.toDate()
+    return thisYear.toDate();
   }
 
   public isToday(momentNow, nextParty) {
-    return moment(nextParty).diff(momentNow, 'days') === 0;
+    const diff = moment(nextParty).diff(momentNow, 'hours', true);
+    const HOURS_IN_A_DAY = 24;
+    // -24 < diff <= 0
+    return diff <= 0 && diff > -HOURS_IN_A_DAY;
   }
 
   public toAddtoCalendarStart(date: Date) {
