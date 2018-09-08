@@ -29,7 +29,7 @@ export class NextPartyService {
 
   private getNextSeptember2ndSaturday(momentNow): Date {
     const thisYear = this.getSeptember2ndSaturday(momentNow);
-    if (momentNow.isAfter(thisYear)) {
+    if (!this.isToday(momentNow, thisYear) && momentNow.isAfter(thisYear)) {
       return this.getSeptember2ndSaturday(
         momentNow
           .clone()

@@ -23,6 +23,13 @@ describe('NextPartyService', () => {
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
 
+    it('should find correct next party date next year in the next day after party', () => {
+      const today = moment('2018-09-09 00:00');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2019-09-14');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
+
     it('should find correct next party date this year', () => {
       const today = moment('2017-09-01');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
@@ -30,8 +37,22 @@ describe('NextPartyService', () => {
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
 
+    it('should find correct next party date this year a day before', () => {
+      const today = moment('2017-09-09 23:00');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2017-09-09');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
+
     it('should find correct next party date today', () => {
       const today = moment('2017-09-09');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2017-09-09');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
+
+    it('should find correct next party date today with time', () => {
+      const today = moment('2017-09-09 09:00');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
       const nextParty = moment('2017-09-09');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
