@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   nextParty: any;
   preloaderVisibility: String = 'shown';
   preloaderHidden: Boolean = false;
+  hidden = false;
 
   imageSources: string[] = [
     'assets/2018.jpg',
@@ -47,6 +48,10 @@ export class AppComponent implements OnInit {
     this.preloaderVisibility = 'hidden';
     this.nextParty = this.nextPartyService.getNextDate(moment());
     this.isToday = this.nextPartyService.isToday(moment(), this.nextParty);
+  }
+
+  onToggleVisibility() {
+    this.hidden = !this.hidden;
   }
 
 }

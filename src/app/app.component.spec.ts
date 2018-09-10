@@ -16,7 +16,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        MockComponent({ selector: 'app-next-party-panel', inputs: ['nextParty', 'isToday'] })
+        MockComponent({ selector: 'app-next-party-panel', inputs: ['nextParty', 'isToday'] }),
+        MockComponent({ selector: 'carousel', inputs: ['config', 'sources'] })
       ],
       providers: [NextPartyService]
     }).compileComponents();
