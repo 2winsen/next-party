@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { NextPartyService } from './core/next-party.service';
 import * as moment from 'moment';
+import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
 
 
 @Component({
@@ -23,6 +24,21 @@ export class AppComponent implements OnInit {
   nextParty: any;
   preloaderVisibility: String = 'shown';
   preloaderHidden: Boolean = false;
+
+  imageSources: string[] = [
+    'assets/2018.jpg',
+    'assets/2017.jpg'
+  ];
+
+  config: ICarouselConfig = {
+    verifyBeforeLoad: true,
+    log: false,
+    animation: true,
+    animationType: AnimationConfig.SLIDE,
+    autoplay: false,
+    autoplayDelay: 0,
+    stopAutoplayMinWidth: 768
+  };
 
   constructor(private nextPartyService: NextPartyService) { }
 

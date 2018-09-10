@@ -1,96 +1,104 @@
 @import "~variables.scss";
-
 .preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $default-bg-color;
-    z-index: 99999;
-    height: 100%;
-    width: 100%;
-    overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $default-bg-color;
+  z-index: 99999;
+  height: 100%;
+  width: 100%;
+  overflow: hidden !important;
 }
 
 .loaded {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    background-image: url(/assets/loading.gif);
-    background-repeat: no-repeat;
-    background-position: center;
-    -moz-background-size: cover;
-    background-size: cover;
-    margin: -20px 0 0 -20px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url(/assets/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  -moz-background-size: cover;
+  background-size: cover;
+  margin: -20px 0 0 -20px;
 }
-
-
-/* Extra markup and styles for table-esque vertical and horizontal centering */
 
 .site-wrapper {
-    background: url(/assets/beaver.jpg) no-repeat center top fixed;
-    background-size: cover;
-    display: table;
-    width: 100%;
-    height: 100%;
-    /* For at least Firefox */
-    min-height: 100%;
-    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+  background-size: cover;
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* For at least Firefox */
+  min-height: 100%;
 }
-
-.cover-container {
-    background-color: rgba(0, 0, 0, .6);
-    margin-right: auto;
-    margin-left: auto;
-}
-
-
-/*
- * Cover
- */
 
 .cover {
-    padding: 0 20px;
+  padding: 0 20px;
 }
 
 .cover .btn-lg {
-    padding: 10px 20px;
-    font-weight: bold;
+  padding: 10px 20px;
+  font-weight: bold;
 }
 
-
-/* Padding for spacing */
-
 .inner {
-    padding: 30px;
+  padding: 15px;
 }
 
 .site-wrapper-inner {
-    display: table-cell;
-    vertical-align: top;
-    background-color: rgba(0, 0, 0, .2);
-    width: 100%;
-    height: 100%;
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
 }
 
-@media (min-width: 768px) {
-    /* Start the vertical centering */
-    .site-wrapper-inner {
-        vertical-align: middle;
-    }
-    /* Handle the widths */
-    .cover-container {
-        width: 100%;
-        /* Must be percentage or pixels for horizontal alignment */
-    }
+.carousel-wrapper {
+  width: 100%;
+  height: 100%;
 }
 
-@media (min-width: 992px) {
-    .cover-container {
-        width: 700px;
-    }
+.carousel-wrapper::ng-deep carousel-slide img {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-wrapper::ng-deep .carousel-nav-list__item--current {
+    background-color: $accent-color;
+}
+
+.cover-container {
+  background-color: rgba(0, 0, 0, .6);
+  width: 100%;
+  box-sizing: content-box;
+  top: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Portrait mode
+@media (min-width: 600px) {
+  .cover-container {
+    top: 0;
+    width: 70%;
+  }
+  .inner {
+    padding: 5px;
+  }
+}
+
+// Desktops
+@media (min-width: 1000px) {
+  .cover-container {
+    top: 25%;
+    width: 700px;
+  }
+  .inner {
+    padding: 15px;
+  }
 }

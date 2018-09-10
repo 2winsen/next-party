@@ -3,6 +3,9 @@
         <div class='preloader' [@visibilityChanged]="preloaderVisibility">
             <div class='loaded' [hidden]="preloaderHidden">&nbsp;</div>
         </div>
+        <div class="carousel-wrapper">
+            <carousel [sources]="imageSources" [config]="config"></carousel>
+        </div>
         <div class="cover-container">
             <div class="inner cover">
                 <app-next-party-panel [nextParty]="nextParty" [isToday]="isToday"></app-next-party-panel>
