@@ -11,13 +11,13 @@ import { NextPartyService } from './../core/next-party.service';
 export class NextPartyPanelComponent implements OnInit {
   @Input() nextParty: Date;
   @Input() isToday: Boolean;
-  isTodayAtcStart: String;
-  isTodayAtcEnd: String;
+  atcStart: String;
+  atcEnd: String;
 
   constructor(private nextPartyService: NextPartyService) { }
 
   ngOnInit(): void {
-    this.isTodayAtcStart = this.nextPartyService.toAddtoCalendarStart(this.nextParty);
-    this.isTodayAtcEnd = this.nextPartyService.toAddtoCalendarEnd(this.nextParty);
+    this.atcStart = this.nextPartyService.addToCalendarStart(this.nextParty);
+    this.atcEnd = this.nextPartyService.addToCalendarEnd(this.nextParty);
   }
 }

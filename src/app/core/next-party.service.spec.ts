@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { NextPartyService } from './next-party.service';
 
 describe('NextPartyService', () => {
-  let service;
+  let service: NextPartyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,9 +24,9 @@ describe('NextPartyService', () => {
     });
 
     it('should find correct next party date next year in the next day after party', () => {
-      const today = moment('2018-09-09 00:00');
+      const today = moment('2017-09-10 00:00');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
-      const nextParty = moment('2019-09-14');
+      const nextParty = moment('2018-09-08');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
 
@@ -57,51 +57,72 @@ describe('NextPartyService', () => {
       const nextParty = moment('2017-09-09');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
+
+    it('should find correct next party date - custom date', () => {
+      const today = moment('2019-08-21 09:00');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2019-10-05');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
+
+    it('should find correct next party date next year - custom date', () => {
+      const today = moment('2018-12-25');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2019-10-05');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
+
+    it('should find correct next party date next year after custom date', () => {
+      const today = moment('2019-10-06');
+      expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
+      const nextParty = moment('2020-09-12');
+      expect(service.getNextDate(today)).toEqual(nextParty.toDate());
+    });
   });
 
   describe('isToday()', () => {
     it('should return false for date in past', () => {
       const today = moment('2017-09-09');
       const nextParty = moment('2017-09-10');
-      expect(service.isToday(today, nextParty.toDate())).toEqual(false);
+      expect(service.isToday(today, nextParty)).toEqual(false);
     });
 
     it('should return false for date in future', () => {
       const today = moment('2017-09-11');
       const nextParty = moment('2017-09-10');
-      expect(service.isToday(today, nextParty.toDate())).toEqual(false);
+      expect(service.isToday(today, nextParty)).toEqual(false);
     });
 
     it('should return false for 1 day before a party', () => {
       const today = moment('2017-09-10 21:00');
       const nextParty = moment('2017-09-11');
-      expect(service.isToday(today, nextParty.toDate())).toEqual(false);
+      expect(service.isToday(today, nextParty)).toEqual(false);
     });
 
     it('should return true', () => {
       const today = moment('2017-09-11');
       const nextParty = moment('2017-09-11');
-      expect(service.isToday(today, nextParty.toDate())).toEqual(true);
+      expect(service.isToday(today, nextParty)).toEqual(true);
     });
 
     it('should return true for a party end', () => {
       const today = moment('2017-09-11 23:59');
       const nextParty = moment('2017-09-11');
-      expect(service.isToday(today, nextParty.toDate())).toEqual(true);
+      expect(service.isToday(today, nextParty)).toEqual(true);
     });
   });
 
-  describe('toAddtoCalendarStart()', () => {
+  describe('addToCalendarStart()', () => {
     it('should return date and time in correct format', () => {
       const date = moment('2017-09-10').toDate();
-      expect(service.toAddtoCalendarStart(date)).toEqual('2017-09-10 10:00:00');
+      expect(service.addToCalendarStart(date)).toEqual('2017-09-10 10:00:00');
     });
   });
 
-  describe('toAddtoCalendarEnd()', () => {
+  describe('addToCalendarEnd()', () => {
     it('should return date and time in correct format', () => {
       const date = moment('2017-09-10').toDate();
-      expect(service.toAddtoCalendarEnd(date)).toEqual('2017-09-10 23:00:00');
+      expect(service.addToCalendarEnd(date)).toEqual('2017-09-10 23:00:00');
     });
   });
 });

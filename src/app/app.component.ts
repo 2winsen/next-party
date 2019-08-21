@@ -21,9 +21,9 @@ import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
 })
 export class AppComponent implements OnInit {
   isToday: boolean;
-  nextParty: any;
-  preloaderVisibility: String = 'shown';
-  preloaderHidden: Boolean = false;
+  nextParty: Date;
+  preloaderVisibility = 'shown';
+  preloaderHidden = false;
   hidden = false;
 
   imageSources: string[] = [
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     this.preloaderHidden = true;
     this.preloaderVisibility = 'hidden';
     this.nextParty = this.nextPartyService.getNextDate(moment());
-    this.isToday = this.nextPartyService.isToday(moment(), this.nextParty);
+    this.isToday = this.nextPartyService.isToday(moment(), moment(this.nextParty));
   }
 
   onToggleVisibility() {
