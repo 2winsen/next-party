@@ -1,13 +1,24 @@
 import { TestBed, inject } from '@angular/core/testing';
 import * as moment from 'moment';
 import { NextPartyService } from './next-party.service';
+import { MomentsMap } from '../types';
+
+class NextPartyServiceMock extends NextPartyService {
+  protected getCustomDatesMap(): MomentsMap {
+    return {
+      2000: moment('2000-10-05 00:00'),
+    };
+  }
+}
 
 describe('NextPartyService', () => {
   let service: NextPartyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NextPartyService]
+      providers: [
+        { provide: NextPartyService, useClass: NextPartyServiceMock }
+      ]
     });
   });
 
@@ -59,23 +70,23 @@ describe('NextPartyService', () => {
     });
 
     it('should find correct next party date - custom date', () => {
-      const today = moment('2019-08-21 09:00');
+      const today = moment('2000-08-21 09:00');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
-      const nextParty = moment('2019-10-05');
+      const nextParty = moment('2000-10-05');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
 
     it('should find correct next party date next year - custom date', () => {
-      const today = moment('2018-12-25');
+      const today = moment('1999-12-25');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
-      const nextParty = moment('2019-10-05');
+      const nextParty = moment('2000-10-05');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
 
     it('should find correct next party date next year after custom date', () => {
-      const today = moment('2019-10-06');
+      const today = moment('2000-10-06');
       expect(service.getNextDate(today)).toEqual(jasmine.any(Date));
-      const nextParty = moment('2020-09-12');
+      const nextParty = moment('2001-09-08');
       expect(service.getNextDate(today)).toEqual(nextParty.toDate());
     });
   });

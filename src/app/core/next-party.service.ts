@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Moment } from 'moment';
 import * as moment from 'moment';
-
-interface MomentsMap {
-  [value: number]: Moment;
-}
+import { MomentsMap } from '../types';
 
 @Injectable()
 export class NextPartyService {
   private static readonly ADD_TO_CALENDAR_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
-  private readonly CUSTOM_PARTY_DATES_MAP: MomentsMap = {
-    2019: moment('2019-10-05 00:00'),
-  };
-
   constructor() {
+  }
+
+  protected getCustomDatesMap(): MomentsMap {
+    return {
+      2019: moment('2019-10-05 00:00'),
+    };
   }
 
   public getNextDate(momentNow: Moment): Date {
@@ -43,7 +42,7 @@ export class NextPartyService {
   }
 
   private tryToOverrideWithCustomDate(nextPartyDate: Moment): Moment {
-    const customDate = this.CUSTOM_PARTY_DATES_MAP[nextPartyDate.year()];
+    const customDate = this.getCustomDatesMap()[nextPartyDate.year()];
     return customDate || nextPartyDate;
   }
 
