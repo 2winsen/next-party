@@ -31,14 +31,20 @@ export class NextPartyService {
       .startOf('day');
   }
 
+  private calculatePartyDateFrom(momentNow: Moment): Moment {
+    return this.tryToOverrideWithCustomDate(
+      this.getSeptember2ndSaturday(momentNow)
+    );
+  }
+
   private calculateNextPartyDate(momentNow: Moment): Moment {
-    let thisYearsParty = this.getSeptember2ndSaturday(momentNow);
+    const thisYearsParty = this.calculatePartyDateFrom(momentNow);
     const partyIsNextYear = !this.isToday(momentNow, thisYearsParty) && momentNow.isAfter(thisYearsParty);
     if (partyIsNextYear) {
       const nextYear = momentNow.clone().add(1, 'year');
-      thisYearsParty = this.getSeptember2ndSaturday(nextYear);
+      return this.calculatePartyDateFrom(nextYear);
     }
-    return this.tryToOverrideWithCustomDate(thisYearsParty);
+    return thisYearsParty;
   }
 
   private tryToOverrideWithCustomDate(nextPartyDate: Moment): Moment {
