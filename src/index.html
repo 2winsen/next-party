@@ -2,37 +2,67 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108351344-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108351344-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-108351344-1');
+  </script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Nākošā oficiālā tikšanās</title>
+  <base href="/">
+  <style type="text/css">
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
 
-        gtag('config', 'UA-108351344-1');
-    </script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Nākošā oficiālā tikšanās</title>
-    <base href="/">
+    .preloader-container {
+      background-color: #303a52;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sbl-circ-path {
+      height: 48px;
+      width: 48px;
+      color: rgba(90, 90, 90, 0.7);
+      position: relative;
+      display: inline-block;
+      border: 5px solid;
+      border-radius: 50%;
+      border-right-color: #fff;
+      animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <script type="text/javascript">(function () {
-            if (window.addtocalendar) if (typeof window.addtocalendar.start == "function") return;
-            if (window.ifaddtocalendar == undefined) {
-                window.ifaddtocalendar = 1;
-                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                s.type = 'text/javascript'; s.charset = 'UTF-8'; s.async = true;
-                s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://addtocalendar.com/atc/1.5/atc.min.js';
-                var h = d[g]('body')[0]; h.appendChild(s);
-            }
-        })();
-    </script>
-
-    <app-root></app-root>
+  <app-root>
+    <div class="preloader-container">
+      <div class="sbl-circ-path"></div>
+    </div>
+  </app-root>
 </body>
 
 </html>

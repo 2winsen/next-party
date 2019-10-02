@@ -1,19 +1,6 @@
-<div class="site-wrapper">
-    <div class="site-wrapper-inner">
-        <div class='preloader' [@visibilityChanged]="preloaderVisibility">
-            <div class='loaded' [hidden]="preloaderHidden">&nbsp;</div>
-        </div>
-        <div class="carousel-wrapper">
-            <carousel [sources]="imageSources" [config]="config"></carousel>
-        </div>
-        <div *ngIf="hidden" class="minimized-button" (click)="onToggleVisibility()">
-            <span class="minmax glyphicon glyphicon-chevron-up" aria-hidden="true" title="Expand Details"></span>
-        </div>
-        <div class="cover-container" [ngClass]="{'hidden-2': hidden }">
-            <span (click)="onToggleVisibility()" class="minmax glyphicon glyphicon-chevron-down" aria-hidden="true" title="Collapse Details"></span>
-            <div class="inner cover">
-                <app-next-party-panel [nextParty]="nextParty" [isToday]="isToday"></app-next-party-panel>
-            </div>
-        </div>
-    </div>
-</div>
+<main>
+  <app-slick-carousel></app-slick-carousel>
+</main>
+<footer>
+  <app-next-party-panel></app-next-party-panel>
+</footer>

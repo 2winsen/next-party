@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NextPartyService } from './../core/next-party.service';
+import * as moment from 'moment';
+import { now } from '../utils/date-utils';
 
 
 @Component({
@@ -9,15 +11,20 @@ import { NextPartyService } from './../core/next-party.service';
   providers: [NextPartyService]
 })
 export class NextPartyPanelComponent implements OnInit {
-  @Input() nextParty: Date;
-  @Input() isToday: Boolean;
-  atcStart: String;
-  atcEnd: String;
+  isToday: boolean;
+  nextParty: Date;
 
   constructor(private nextPartyService: NextPartyService) { }
 
   ngOnInit(): void {
-    this.atcStart = this.nextPartyService.addToCalendarStart(this.nextParty);
-    this.atcEnd = this.nextPartyService.addToCalendarEnd(this.nextParty);
+    this.nextParty = this.nextPartyService.getNextDate(moment());
+    this.isToday = this.nextPartyService.isToday(
+      moment(now()),
+      moment(this.nextParty)
+    );
+  }
+
+  onCompleted(completed: boolean) {
+    this.isToday = completed;
   }
 }

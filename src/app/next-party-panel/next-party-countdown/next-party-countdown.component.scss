@@ -1,11 +1,20 @@
-@import "~variables.scss";
+@import '../../../variables.scss';
 
-.next-party-countdown-days {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.next-party-countdown-time {
-    text-align: center;
+:host .unit-container {
+    width: 20%;
+    max-width: 160px;
+}
+
+:host .unit-container p {
+    margin: 0;
+}
+
+:host .unit-container p.unit {
+    margin-bottom: 5px;
 }

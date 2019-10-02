@@ -1,154 +1,16 @@
-@import "~variables.scss";
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: $default-bg-color;
-  z-index: 99999;
+@import "../variables.scss";
+
+:host {
   height: 100%;
-  width: 100%;
-  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
 }
 
-.loaded {
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background-image: url(/assets/loading.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  -moz-background-size: cover;
-  background-size: cover;
-  margin: -20px 0 0 -20px;
+:host main {
+  flex: 3;
 }
 
-.site-wrapper {
-  background-size: cover;
-  display: table;
-  width: 100%;
-  height: 100%;
-  /* For at least Firefox */
-  min-height: 100%;
-}
-
-.cover {
-  padding: 0 20px;
-}
-
-.cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
-.inner {
-  padding: 15px;
-}
-
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-wrapper::ng-deep carousel-slide img {
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-wrapper::ng-deep .carousel-nav-list__item--current {
-  background-color: $accent-color;
-}
-
-.carousel-wrapper::ng-deep .carousel-nav-list {
-  padding-left: 0;
-}
-
-.cover-container {
-  background-color: rgba(0, 0, 0, .6);
-  width: 100%;
-  box-sizing: content-box;
-  top: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  transition: all .3s ease-in;
-}
-
-.cover-container.hidden-2 {
-  transform: translateY(1080px);
-  opacity: 0;
-}
-
-.cover-container::ng-deep h2 {
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-.cover-container::ng-deep h1 {
-  font-size: 25px;
-}
-
-.cover-container .glyphicon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.minmax {
-  color: $accent-color;
-  top: 17px;
-  cursor: pointer;
-}
-
-.minimized-button {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, .5);
-  height: 50px;
-  width: 50px;
-}
-
-// Portrait mode
-@media (min-width: 600px) {
-  .cover-container {
-    top: 0;
-    width: 50%;
-  }
-  .inner {
-    padding: 0;
-  }
-}
-
-// Desktops
-@media (min-width: 1000px) {
-  .cover-container {
-    top: 25%;
-    width: 700px;
-  }
-  .inner {
-    padding: 15px;
-  }
-  .cover-container::ng-deep h2 {
-    margin-top: 20px;
-    font-size: 30px;
-  }
-  .cover-container::ng-deep h1 {
-    font-size: 40px;
-  }
-  .minmax {
-    font-size: 20px;
-  }
+:host footer {
+  background-color: $main-color;
+  flex: 1;
 }

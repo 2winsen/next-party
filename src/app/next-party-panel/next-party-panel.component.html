@@ -1,20 +1,14 @@
-<div class="next-party-panel">
-    <section>
-        <h2 class="next-party-panel__header">Nākošā oficiālā tikšanās notiks</h2>
-        <h2 *ngIf="!isToday">
-            <span class="next-party-panel__date">{{nextParty | latvianDate}}</span>
-        </h2>
-        <h1 *ngIf="isToday" class="next-party-panel-today__label">ŠODIEN. JĒĒI!!!</h1>
-        <app-next-party-countdown *ngIf="!isToday" units="Days | Hours | Minutes | Seconds" end="{{nextParty}}"></app-next-party-countdown>
-        <span class="addtocalendar atc-style-blue">
-            <var class="atc_event">
-                <var class="atc_date_start">{{atcStart}}</var>
-                <var class="atc_date_end">{{atcEnd}}</var>
-                <var class="atc_timezone">Europe/Riga</var>
-                <var class="atc_title">Nākošā oficiālā tikšanās notiks</var>
-                <var class="atc_description">Reizi gadā mēs satiekamies ar draugiem, lai labi pavadīt laiku...</var>
-                <var class="atc_location">Latvija</var>
-            </var>
-        </span>
-    </section>
-</div>
+<div class="next-party-panel__header large">Nākošā tikšanās notiks</div>
+<ng-container *ngIf="isToday; then label; else countdown">
+</ng-container>
+<ng-template #label>
+    <div class="next-party-panel-today__label extra-large with-color-change">ŠODIEN!!!</div>
+</ng-template>
+<ng-template #countdown>
+    <div class="atc-container">
+        <app-add-to-calendar [nextParty]="nextParty">
+        </app-add-to-calendar>
+    </div>
+    <app-next-party-countdown [end]="nextParty" (completed)="onCompleted($event)">
+    </app-next-party-countdown>
+</ng-template>

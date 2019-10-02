@@ -1,20 +1,24 @@
-@import "~variables.scss";
+@import "../../variables.scss";
 
-.next-party-panel__date {
-    font-weight: bold;    
-    text-transform: uppercase;
+:host {
+    color: $main-font-color;
+    text-align: center;
+    padding: 20px;
+    display: block;
 }
 
-.next-party-panel {    
-    color: #b7b7b7;
+:host .next-party-panel-today__label {
+    font-weight: bold;
+    margin: 25px 0;
 }
 
-.next-party-panel-today__label {
-    color: $accent-color;
-    font-weight: bold;    
+:host .atc-container {
+    margin: 10px 0;
 }
 
-.addtocalendar {
-    margin-top: 10px;
-    margin-bottom: 20px;
+@media (min-width: 1200px) {
+    :host {
+        padding: 20px;
+        padding-bottom: 40px;
+    }
 }

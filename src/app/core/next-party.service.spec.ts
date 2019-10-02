@@ -1,9 +1,9 @@
 import { TestBed, inject } from '@angular/core/testing';
 import * as moment from 'moment';
 import { NextPartyService } from './next-party.service';
-import { MomentsMap } from '../types';
+import MomentsMap from '../types/MomentsMap';
 
-class NextPartyServiceMock extends NextPartyService {
+class NextPartyMockService extends NextPartyService {
   protected getCustomDatesMap(): MomentsMap {
     return {
       2000: moment('2000-10-05 00:00'),
@@ -16,18 +16,10 @@ describe('NextPartyService', () => {
   let service: NextPartyService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        { provide: NextPartyService, useClass: NextPartyServiceMock }
-      ]
-    });
+    service = new NextPartyMockService();
   });
 
-  beforeEach(inject([NextPartyService], (_service_: NextPartyService) => {
-    service = _service_;
-  }));
-
-  describe('getNextDate()', () => {
+  describe('NextPartyService.getNextDate', () => {
     it('should find next party date - this year', () => {
       const today = moment('2017-09-01');
       const nextParty = moment('2017-09-09');
@@ -65,7 +57,7 @@ describe('NextPartyService', () => {
     });
   });
 
-  describe('getNextDate() - with custom dates', () => {
+  describe('NextPartyService.getNextDate - with custom dates', () => {
     it('should find custom next party date - this year before original date', () => {
       const today = moment('2000-08-21');
       const nextParty = moment('2000-10-05');
@@ -103,7 +95,7 @@ describe('NextPartyService', () => {
     });
   });
 
-  describe('isToday()', () => {
+  describe('NextPartyService.isToday', () => {
     it('should return false for date in past', () => {
       const today = moment('2017-09-09');
       const nextParty = moment('2017-09-10');
@@ -135,14 +127,14 @@ describe('NextPartyService', () => {
     });
   });
 
-  describe('addToCalendarStart()', () => {
+  describe('NextPartyService.addToCalendarStart', () => {
     it('should return date and time in correct format', () => {
       const date = moment('2017-09-10').toDate();
       expect(service.addToCalendarStart(date)).toEqual('2017-09-10 10:00:00');
     });
   });
 
-  describe('addToCalendarEnd()', () => {
+  describe('NextPartyService.addToCalendarEnd', () => {
     it('should return date and time in correct format', () => {
       const date = moment('2017-09-10').toDate();
       expect(service.addToCalendarEnd(date)).toEqual('2017-09-10 23:00:00');

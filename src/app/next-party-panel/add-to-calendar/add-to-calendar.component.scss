@@ -1,0 +1,13 @@
+:host {
+    text-align: center;
+}
+
+:host::ng-deep .addeventatc {
+    border-radius: 0;
+    border: 0;
+    font-size: 14px;
+}
+
+:host::ng-deep .addeventatc:hover {
+    font-size: 14px;
+}

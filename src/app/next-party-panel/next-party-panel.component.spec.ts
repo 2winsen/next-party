@@ -1,49 +1,51 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NextPartyPanelComponent } from './next-party-panel.component';
-import { MockComponent } from 'ng2-mock-component';
 import { ComponentFixture } from '@angular/core/testing';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, NO_ERRORS_SCHEMA } from '@angular/core';
 
 @Pipe({ name: 'latvianDate' })
-class MockLatvianDatePipe implements PipeTransform {
-  transform(value) {
+class LatvianDateMockPipe implements PipeTransform {
+  transform(value: Date) {
     return value;
   }
 }
 
 describe('NextPartyPanelComponent', () => {
   let fixture: ComponentFixture<NextPartyPanelComponent>;
+  let component: NextPartyPanelComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         NextPartyPanelComponent,
-        MockLatvianDatePipe,
-        MockComponent({ selector: 'app-next-party-countdown', inputs: ['units', 'end'] })
-      ]
+        LatvianDateMockPipe,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
+  }));
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(NextPartyPanelComponent);
-  }));
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  it('should show party today label and hide next party labels', async(() => {
-    const comp = fixture.componentInstance;
-    comp.isToday = true;
+  it('should show today\'s party label', () => {
+    component.isToday = true;
     fixture.detectChanges();
     const el = fixture.nativeElement;
-    expect(el.querySelector('.next-party-panel-today__label').textContent).toEqual('ŠODIEN. JĒĒI!!!');
+    expect(el.querySelector('.next-party-panel-today__label').textContent).toEqual('ŠODIEN!!!');
     expect(el.querySelector('.next-party-panel__date')).toEqual(null);
-    expect(el.querySelector('next-party-countdown')).toEqual(null);
-  }));
+    expect(el.querySelector('app-next-party-countdown')).toEqual(null);
+  });
 
-  it('should show next party labels and hide today label', async(() => {
-    const comp = fixture.componentInstance;
-    comp.isToday = false;
-    comp.nextParty = new Date('February 4, 2016 10:13:00');
+  it('should show next party date, countdown and add to calendar component', () => {
+    component.isToday = false;
+    component.nextParty = new Date('February 4, 2016 10:13:00');
     fixture.detectChanges();
     const el = fixture.nativeElement;
-    expect(el.querySelector('.next-party-panel__date').textContent).toMatch(/Thu Feb 04 2016 10:13:00/);
-    expect(el.querySelector('next-party-countdown')).toBeDefined();
+    expect(el.querySelector('app-next-party-countdown')).toBeDefined();
+    expect(el.querySelector('app-add-to-calendar')).toBeDefined();
     expect(el.querySelector('.next-party-panel-today__label')).toEqual(null);
-  }));
-
+  });
 });
