@@ -24,18 +24,6 @@
   background-position: center;
 }
 
-:host::ng-deep .background-image.image2019 {
-  background-image: url(/assets/2019.jpg);
-}
-
-:host::ng-deep .background-image.image2018 {
-  background-image: url(/assets/2018.jpg);
-}
-
-:host::ng-deep .background-image.image2017 {
-  background-image: url(/assets/2017.jpg);
-}
-
 :host::ng-deep .slick-prev {
   left: 15px;
   z-index: 1;
