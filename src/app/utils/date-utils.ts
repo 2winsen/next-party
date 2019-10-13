@@ -4,7 +4,7 @@ import DateTimeLeft from '../types/DateTimeLeft';
 
 export const now = () => {
   if (!environment.production) {
-    return fakeDate('2020-09-11 23:59:55');
+    return fakeDate('2020-09-10 23:59:55');
   }
   return new Date();
 };

@@ -14,3 +14,15 @@
   background-color: $main-color;
   flex: 1;
 }
+
+// Phone in landscape mode
+@media only screen and (max-height: 400px) {
+  :host {
+    height: 100%;
+    display: block;
+  }
+
+  :host main {
+    height: 100%;
+  }
+}

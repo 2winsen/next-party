@@ -17,6 +17,6 @@ export class LatvianDatePipe implements PipeTransform {
       'novembrī',
       'decembrī'
     ];
-    return `${value.getDate()}. ${latvianMonths[value.getMonth()]} ${value.getFullYear()}. gadā`;
+    return `${value.getFullYear()}. gada ${value.getDate()}. ${latvianMonths[value.getMonth()]}`;
   }
 }

@@ -11,3 +11,7 @@
 :host::ng-deep .addeventatc:hover {
     font-size: 14px;
 }
+
+:host::ng-deep .addeventatc_dropdown span {
+    padding: 8px 10px 8px 55px;
+}
