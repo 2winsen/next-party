@@ -1,9 +1,5 @@
 @import "../../variables.scss";
 
-:host {
-  border: 5px solid $second-color;
-}
-
 :host.slick-dotted.slick-slider {
   margin-bottom: 0;
 }

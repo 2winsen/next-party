@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
+import { version } from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +10,6 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('version', version);
   }
 }
